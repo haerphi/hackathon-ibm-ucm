@@ -1,0 +1,118 @@
+<div *ngIf="SignUpisShown" class="wrapper_Signup">
+  <div class="content_Signup">
+    <form>
+      <div class="doubleinput">
+        <label for="firstname"></label
+        ><input
+          #firstname
+          class="firstname"
+          name="firstname"
+          type="text"
+          placeholder="First Name"
+          required
+        />
+        <label for="lastname"></label
+        ><input
+          #lastname
+          class="lastname"
+          name="lastname"
+          type="text"
+          placeholder="Last Name"
+          required
+        />
+      </div>
+      <label for="email"></label
+      ><input
+        #email
+        class="email"
+        name="email"
+        type="text"
+        placeholder="E-mail"
+        required
+      />
+      <label for="password"></label
+      ><input
+        #password
+        class="password"
+        name="password"
+        type="password"
+        placeholder="Password"
+        required
+      />
+      <label for="password-repeat"></label
+      ><input
+        #password
+        class="password"
+        name="password"
+        type="password"
+        placeholder="Repeat Password"
+        required
+      />
+      <select>
+        <option value="" disabled selected>Activity Sector</option>
+        <option value="Administration & legislation"
+          >Administration & legislation</option
+        >
+        <option value="Building & Construction">Building & Construction</option>
+        <option value="Communication">Communication</option>
+        <option value="Culture">Culture</option>
+        <option value="Economy Management">Economy Management</option>
+        <option value="Environment & nature">Environment & nature</option>
+        <option value="Health & well-being">Health & well-being</option>
+        <option value="Hotel & Food">Hotel & Food</option>
+        <option value="Humans & Social Sciences"
+          >Humans & Social Sciences</option
+        >
+        <option value="Industry">Industry</option>
+        <option value="IT & Telecommunication">IT & Telecommunication</option>
+        <option value="Security">Security</option>
+        <option value="Tourism, sports & leisure"
+          >Tourism, sports & leisure</option
+        >
+        <option value="Transport & logistics">Transport & logistics</option>
+      </select>
+      <select>
+        <option value="" disabled selected>Path Progression</option>
+        <option value="I wish to become self-employee"
+          >I wish to become self-employee</option
+        >
+        <option value="I wish to take over a business"
+          >I wish to take over a business</option
+        >
+        <option value="My business project is validated"
+          >My business project is validated</option
+        >
+        <option value="My business is growing">My business is growing</option>
+        <option value="I'm hiring staff">I'm hiring staff</option>
+        <option value="I manage my collaborators"
+          >I manage my collaborators</option
+        >
+        <option value="I give in to my business"
+          >I give in to my business</option
+        >
+        <option value="I'm reaching retirement age"
+          >I'm reaching retirement age</option
+        >
+      </select>
+      <select>
+        <option value="" disabled selected>Legal Entity Type</option>
+        <option value="SPRL">SPRL</option>
+        <option value="SA">SA</option>
+      </select>
+      <select>
+        <option value="" disabled selected>Work Status</option>
+        <option value="Full self-employed">Full self-employed</option>
+        <option value="Complementary self-employed"
+          >Complementary self-employed</option
+        >
+      </select>
+      <button type="button">
+        Sign In
+      </button>
+    </form>
+  </div>
+  <svg (click)="toggleShowSignUp()" viewPort="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <line x1="1" y1="11" x2="11" y2="1" stroke="#219edf" stroke-width="2" />
+    <line x1="1" y1="1" x2="11" y2="11" stroke="#219edf" stroke-width="2" />
+  </svg>
+</div>

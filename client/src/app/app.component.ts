@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ibm-ucm';
+
+
+  SignInisShown: boolean = false; // Hidden by default
+
+  toggleShowSignIn() {
+    this.SignInisShown = !this.SignInisShown;
+  }
+
+  SignUpisShown: boolean = false; // Hidden by default
+
+  toggleShowSignUp() {
+    this.SignUpisShown = !this.SignUpisShown;
+  }
 }
