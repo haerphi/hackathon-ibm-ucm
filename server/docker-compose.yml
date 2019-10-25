@@ -6,6 +6,7 @@ services:
     environment:
       NODE_ENV: "development"
       SECRET_KEY: "Banana"
+      DB_URL: "mysql://root:root@mysql/ucm"
     volumes:
       - "./package.json:/src/app/package.json"
       - "./node_modules:/src/app/node_modules"
