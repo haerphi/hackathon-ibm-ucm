@@ -1,0 +1,30 @@
+---
+version: "3"
+services:
+  node:
+    image: "becodeorg/node"
+    environment:
+      NODE_ENV: "development"
+    volumes:
+      - "./package.json:/src/app/package.json"
+      - "./node_modules:/src/app/node_modules"
+      - "./bin:/src/app/bin"
+    expose:
+      - "12345"
+      - "9229"
+    ports:
+      - "80:12345"
+      - "9229"
+    command: "nodemon --inspect=0.0.0.0:9229 --watch bin bin/index.js"
+  mysql:
+    image: "mysql:5"
+    restart: "unless-stopped"
+    volumes:
+      - "mysql_db:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+volumes:
+  mysql_db:
