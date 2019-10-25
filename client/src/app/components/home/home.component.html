@@ -8,13 +8,21 @@
         interpretation of legal text.
       </p>
       <p>
-        Our main focus is to be there <b><i>with you</i></b> side-by-side during your journey
-        as a company leader.
+        Our main focus is to be there <b><i>with you</i></b> side-by-side during
+        your journey as company leader.
       </p>
       <div class="search-container">
-        <form>
-          <input type="text" placeholder="Search..." name="search" />
-          <button type="button"><img src="../../../assets/search.svg"></button>
+        <form onsubmit="return false">
+          <input
+            #search
+            type="text"
+            placeholder="Search.."
+            name="search"
+            (keydown)="onKeydown($event, search.value)"
+          />
+          <button type="button" (click)="searchFnc(search.value)">
+            <img src="../../../assets/search.svg" />
+          </button>
         </form>
       </div>
     </div>
