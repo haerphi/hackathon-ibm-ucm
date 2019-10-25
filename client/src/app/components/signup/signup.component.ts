@@ -12,4 +12,10 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
+  SignUpisShown: boolean = true; // Hidden by default
+
+  toggleShowSignUp() {
+    this.SignUpisShown = !this.SignUpisShown;
+  }
+
 }

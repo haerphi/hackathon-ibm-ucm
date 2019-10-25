@@ -14,11 +14,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 30vw;
     height: 50vh;
     border: 1px dotted #219edf;
     color: white;
     border-radius: 0.5rem;
+  }
+
+  svg {
+    position: absolute;
+    top: 27vh;
+    left: 63vw;
+    cursor: pointer;
   }
 
   form {

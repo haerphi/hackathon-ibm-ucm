@@ -21,6 +21,13 @@
     border-radius: 0.5rem;
   }
 
+  svg {
+    position: absolute;
+    top: 14.5vh;
+    left: 63vw;
+    cursor: pointer;
+  }
+
   form {
     z-index: 100;
     width: 100%;
