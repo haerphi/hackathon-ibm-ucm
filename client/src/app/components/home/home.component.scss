@@ -60,28 +60,30 @@
     input[type="text"] {
       font-size: 15px;
       height: 100%;
-      width: 80%;
+      width: 76%;
       margin: 0;
-      border: 1px solid #086788;
+      padding: 0;
+      border: 1px solid #219edf;
       border-radius: 0.5rem;
     }
 
-    input:focus{
-        outline: none;
-      }
+    input::placeholder {
+      padding-left: 1rem;
+    }
 
     button {
-      width: auto;
-      height: 100%;
-      margin: 0;
-      border: none;
-      background: none;
+      width: 9%;
+      height: 105%;
+      margin: 0 0 0 3%;
+      padding: 0;
       cursor: pointer;
+      background: #219edf;
+      border: none;
+      border-radius: 0.5rem;
 
       img {
-          margin-top: 2px;
-          max-width: 100%;
-          max-height: 100%;
+        max-width: 75%;
+        max-height: 75%;
       }
     }
   }

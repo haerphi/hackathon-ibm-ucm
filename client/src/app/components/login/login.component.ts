@@ -12,4 +12,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  SignInisShown: boolean = true; // Hidden by default
+
+  toggleShowSignIn() {
+    this.SignInisShown = !this.SignInisShown;
+  }
+
 }
