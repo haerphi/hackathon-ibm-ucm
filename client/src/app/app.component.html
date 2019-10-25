@@ -1,10 +1,13 @@
 <div class="header">
   <img id="ucm" src="../assets/logo.png" />
   <ul>
-    <li id="notif"><a routerLink="/">Notif</a></li>
-    <li><a routerLink="/">My Account</a></li>
-    <li><a routerLink="/">Sign Up</a></li>
-    <li><a routerLink="/">Sign In / Out</a></li>
+    <!-- <li id="notif"><a routerLink="/">Notif</a></li> -->
+    <!-- <li><a routerLink="/">My Account</a></li> -->
+    <li><a (click)="toggleShowSignIn()">Sign In</a></li>
+    <li><a (click)="toggleShowSignUp()">Sign Up</a></li>
+    <!-- <li><a>Sign Out</a></li> -->
   </ul>
 </div>
 <router-outlet></router-outlet>
+<app-login *ngIf="SignInisShown"></app-login>
+<app-signup *ngIf="SignUpisShown"></app-signup>
