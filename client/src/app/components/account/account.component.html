@@ -2,7 +2,29 @@
   <div class="content_Home">
     <h1>Account</h1>
     <div id="watson">
-      <!-- <p *ngFor></p> -->
+      <div *ngFor="let msg of this.messages">
+        <p *ngIf="msg.type === 'text'">{{ msg.text }}</p>
+        <p *ngIf="msg.type === 'option'">{{ msg.text }}</p>
+        <ul *ngIf="msg.type === 'option'">
+          <li
+            *ngFor="let option of msg.options"
+            (click)="this.sendToWatson(option.value.input.text)"
+          >
+            {{ option.label }}
+          </li>
+        </ul>
+      </div>
+      <input
+        #watsonInput
+        type="text"
+        (keydown)="onKeydown($event, watsonInput.value)"
+      />
+      <button
+        type="button"
+        (click)="this.sendToWatson(watsonInput.value); watsonInput.value = ''"
+      >
+        Send
+      </button>
     </div>
   </div>
 </div>
