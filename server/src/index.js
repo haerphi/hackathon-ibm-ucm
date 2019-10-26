@@ -94,7 +94,7 @@ app.post("/api/question", isCommunity, async (req, res) => {
   res.send(rep);
 });
 
-app.post("/assistant/test", (req, res) => {
+app.post("/assistant", (req, res) => {
   let input = {};
   if (req.body.input) {
     input = {

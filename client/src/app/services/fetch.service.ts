@@ -11,8 +11,11 @@ export class FetchService {
 
   async search(text: string) {
     console.log(`Seach : ${text}`);
-    //const rep = await axios.get("http://localhost/api/search");
-    const rep = [
+    let rep: any = await axios.get(
+      `http://localhost/api/search?search=${text}`
+    );
+    console.log(rep.data);
+    rep = [
       {
         category: "V.A.T",
         descCat:

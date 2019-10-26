@@ -1,8 +1,91 @@
-<div class="wrapper_Home">
-  <div class="content_Home">
-    <h1>Account</h1>
-    <div id="watson">
-      <!-- <p *ngFor></p> -->
+<div class="wrapper_Account">
+  <div class="content_Account">
+    <div class="left_Col">
+      <img src="../../../assets/logouser.svg" />
+      <p>Hi "user name"</p>
+      <select>
+        <option value="" disabled selected>Path Progression</option>
+        <option> </option>
+      </select>
+    </div>
+    <div class="center_Col">
+      <div class="center_Left">
+        <div class="waiting_Questions">
+          <h4>You questions waiting for an answer :</h4>
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+        </div>
+        <div class="historic">
+          <h4>You Historic :</h4>
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+        </div>
+        <div class="answers_Pending">
+          <h4>Your answer waiting for Specialist review :</h4>
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+          <span
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit, molestias?</span
+          >
+        </div>
+      </div>
+      <div class="center_Right">
+        <h4>Your personnal assistant :</h4>
+        <div id="watson">
+          <div *ngFor="let msg of this.messages">
+            <p *ngIf="msg.type === 'text'">{{ msg.text }}</p>
+            <p *ngIf="msg.type === 'option'">{{ msg.text }}</p>
+            <ul *ngIf="msg.type === 'option'">
+              <li
+                *ngFor="let option of msg.options"
+                (click)="this.sendToWatson(option.value.input.text)"
+              >
+                {{ option.label }}
+              </li>
+            </ul>
+          </div>
+          <input
+            #watsonInput
+            type="text"
+            (keydown)="onKeydown($event, watsonInput.value)"
+          />
+          <button
+            type="button"
+            (click)="
+              this.sendToWatson(watsonInput.value); watsonInput.value = ''
+            "
+          >
+            Send
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

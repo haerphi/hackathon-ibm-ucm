@@ -25,6 +25,7 @@ export const search = async query => {
   let sql_a_where = [];
   let sql_lt_where = [];
   let sql_tlt_where = [];
+  console.log(query);
   let keywords = query.split(" ");
   keywords.forEach(e => {
     sql_q_where.push(
@@ -143,7 +144,6 @@ export const api_question = async (
   id
 ) => {
   const conn = await connection;
-  console.log(action);
   switch (action) {
     case "add":
       const sql =

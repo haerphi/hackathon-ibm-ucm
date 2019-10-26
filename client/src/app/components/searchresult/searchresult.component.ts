@@ -14,6 +14,4 @@ export class SearchresultComponent implements OnInit {
   searchFnc(text: string) {
     this.fetchService.search(text);
   }
-
-  //*nfFor="let cat of this.fetchService.resultSearch"
 }
