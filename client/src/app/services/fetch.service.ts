@@ -10,7 +10,12 @@ export class FetchService {
 
   async search(text: string) {
     console.log(text);
-    const rep = await axios.get("http://localhost/api/pathsteps");
-    console.log(rep);
+    //const rep = await axios.get("http://localhost/api/search");
+    return { error: "not yet implement" };
+  }
+
+  async fetchBasic(looking: string) {
+    const rep = await axios.get(`http://localhost/api/${looking}`);
+    return rep.data;
   }
 }
