@@ -72,10 +72,6 @@ export const search = async query => {
   //const subst = `<strong>$1</strong>`;
 
   for (let i = 0; i < sql_rep.length; i++) {
-    sql_rep[i].question = sql_rep[i].question.replace(regex, subst);
-    sql_rep[i].answer = sql_rep[i].answer.replace(regex, subst);
-    sql_rep[i].legal_text = sql_rep[i].legal_text.replace(regex, subst);
-    sql_rep[i].title = sql_rep[i].title.replace(regex, subst);
     sql_rep[i].categories = await getCat(sql_rep[i].id_answer_pk);
     sql_rep[i].job_domains = await getJobs(sql_rep[i].id_answer_pk);
     sql_rep[i].path_steps = await getPaths(sql_rep[i].id_answer_pk);
