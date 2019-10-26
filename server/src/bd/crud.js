@@ -6,6 +6,7 @@ export const search = async query => {
   let sql_a_where = [];
   let sql_lt_where = [];
   let sql_tlt_where = [];
+  console.log(query);
   let keywords = query.split(" ");
   keywords.forEach(e => {
     sql_q_where.push(
@@ -48,9 +49,7 @@ export const search = async query => {
     "WHERE " +
     sql_where;
   const [sql_rep] = await conn.execute(sql);
-  console.log(sql_rep);
   const regex = new RegExp("(" + keywords.join("|") + ")", "igm");
-  console.log(regex);
   const subst = `<strong>$1</strong>`;
 
   for (let i = 0; i < sql_rep.length; i++) {
@@ -126,7 +125,6 @@ export const api_question = async (
   id
 ) => {
   const conn = await connection;
-  console.log(action);
   switch (action) {
     case "add":
       const sql =
