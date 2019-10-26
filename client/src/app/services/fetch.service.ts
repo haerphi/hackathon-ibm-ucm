@@ -11,6 +11,7 @@ export class FetchService {
 
   async search(text: string) {
     if (text.length > 0) {
+      this.resultSearch = [];
       console.log(`Seach : ${text}`);
       let rep: any = await axios.get(
         `http://localhost/api/search?search=${text}`
