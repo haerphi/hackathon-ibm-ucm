@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 import { login, isCommunity } from "./middleware/auth";
+const cors = require("cors");
+
+import { login } from "./middleware/auth";
 import {
   getPathSteps,
   getLegalStatus,
@@ -13,9 +16,10 @@ import {
 import { api_question } from "./bd/crud";
 import { search } from "./middleware/question";
 
-const app = express();
-
 const port = 12345;
+
+const app = express();
+app.use(cors());
 
 app.use(bodyParser.json());
 
