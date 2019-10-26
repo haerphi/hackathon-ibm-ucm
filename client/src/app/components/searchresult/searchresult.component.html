@@ -10,16 +10,15 @@
     </div>
     <div *ngIf="this.fetchService.resultSearch != null" class="results">
       <div *ngFor="let res of this.fetchService.resultSearch" class="items">
-        <div class=" sub">
-          <p *ngFor="let cat of res.categories">{{ cat.label }}</p>
-        </div>
-        <div class=" sub">
-          {{ res.question }}
-        </div>
-        <div class=" sub">
+        <div class=" sub sector">
           <p *ngFor="let dom of res.job_domains">{{ dom.label }}</p>
         </div>
-        <div class=" sub"><button (click)="moveTo(res.id)">Open</button></div>
+        <div class=" sub category">
+          <p *ngFor="let cat of res.categories">{{ cat.label }}</p>
+        </div>
+        <div class=" sub question " (click)="moveTo(res.id)">
+          {{ res.question }}
+        </div>
       </div>
     </div>
   </div>
