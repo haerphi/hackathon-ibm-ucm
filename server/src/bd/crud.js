@@ -1,5 +1,24 @@
 import { connection } from "./mysql";
-import { getPathSteps } from "./userrequest";
+export const getAnswerByQuestionId = async id => {
+  const conn = await connection;
+  const sql =
+    "SELECT id_question_pk, question, id_answer_pk, answer, id_legal_text_pk, legal_text, title " +
+    "FROM questions AS Q " +
+    "INNER JOIN answers AS A ON Q.id_question_pk = A.id_question_fk " +
+    "INNER JOIN legal_texts AS LT ON LT.id_legal_text_pk = A.id_legal_text_fk " +
+    "WHERE id_question_pk = " +
+    id;
+  const [sql_rep] = await conn.execute(sql);
+  console.log(sql);
+  for (let i = 0; i < sql_rep.length; i++) {
+    sql_rep[i].categories = await getCat(sql_rep[i].id_answer_pk);
+    sql_rep[i].job_domains = await getJobs(sql_rep[i].id_answer_pk);
+    sql_rep[i].path_steps = await getPaths(sql_rep[i].id_answer_pk);
+    sql_rep[i].upvotes = await getUpvotes(sql_rep[i].id_answer_pk);
+    sql_rep[i].downvotes = await getDownvotes(sql_rep[i].id_answer_pk);
+  }
+  return sql_rep;
+};
 export const search = async query => {
   const conn = await connection;
   let sql_q_where = [];
@@ -48,10 +67,8 @@ export const search = async query => {
     "WHERE " +
     sql_where;
   const [sql_rep] = await conn.execute(sql);
-  console.log(sql_rep);
-  const regex = new RegExp("(" + keywords.join("|") + ")", "igm");
-  console.log(regex);
-  const subst = `<strong>$1</strong>`;
+  //const regex = new RegExp("(" + keywords.join("|") + ")", "igm");
+  //const subst = `<strong>$1</strong>`;
 
   for (let i = 0; i < sql_rep.length; i++) {
     sql_rep[i].question = sql_rep[i].question.replace(regex, subst);

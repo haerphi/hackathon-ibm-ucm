@@ -22,7 +22,7 @@ import {
   getCategories
 } from "./bd/userrequest";
 
-import { api_question, search } from "./bd/crud";
+import { api_question, search, getAnswerByQuestionId } from "./bd/crud";
 
 const port = 12345;
 
@@ -61,6 +61,11 @@ app.get("/api/jobdomains", async (req, res) => {
 
 app.get("/api/categories", async (req, res) => {
   const rep = await getCategories();
+  res.send(rep);
+});
+app.get("/api/get_answer", async (req, res) => {
+  let query = req.query.id;
+  const rep = await getAnswerByQuestionId(query);
   res.send(rep);
 });
 app.get("/api/search", async (req, res) => {
