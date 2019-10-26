@@ -1,19 +1,28 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import axios from "axios";
+import { AuthService } from "src/app/services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-account",
   templateUrl: "./account.component.html",
   styleUrls: ["./account.component.scss"]
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit, OnDestroy {
   messages: any[] = [];
 
-  constructor() {}
+  constructor(public router: Router, private authService: AuthService) {}
 
-  ngOnInit() {
-    this.firstMsg();
+  async ngOnInit() {
+    const connected = await this.authService.isLogin();
+    if (connected) {
+      this.firstMsg();
+    } else {
+      this.router.navigate([""]);
+    }
   }
+
+  ngOnDestroy() {}
 
   async firstMsg() {
     let rep: any = await axios.post("http://localhost/assistant");
