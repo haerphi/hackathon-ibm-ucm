@@ -6,6 +6,7 @@
         <button type="button" (click)="searchFnc(search.value)">
           <img src="../../../assets/search.svg" />
         </button>
+        <button type="button" (click)="toggleShowAsk()">OR ASK</button>
       </form>
     </div>
     <div *ngIf="this.fetchService.resultSearch != null" class="results">
@@ -23,3 +24,4 @@
     </div>
   </div>
 </div>
+<app-ask *ngIf="AskisShown"></app-ask>
