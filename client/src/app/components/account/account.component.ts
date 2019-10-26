@@ -60,4 +60,10 @@ export class AccountComponent implements OnInit, OnDestroy {
       this.messageGestion(rep);
     }
   }
+
+  OptionsShown: boolean = false; // Shown by default
+
+  toggleShowOptions() {
+    this.OptionsShown = !this.OptionsShown;
+  }
 }
