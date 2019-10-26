@@ -1,10 +1,8 @@
 const express = require("express");
-const session = require("express-session");
 const bodyParser = require("body-parser");
-
-import { login } from "./middleware/auth";
+const jwt = require("jsonwebtoken");
+import { login, isCommunity } from "./middleware/auth";
 import {
-  loginBD,
   getPathSteps,
   getLegalStatus,
   getSelfEmployedStatus,
@@ -12,6 +10,7 @@ import {
   getCategories
 } from "./bd/userrequest";
 
+import { api_question } from "./bd/crud";
 import { search } from "./middleware/question";
 
 const app = express();
@@ -20,16 +19,13 @@ const port = 12345;
 
 app.use(bodyParser.json());
 
-app.post("/login", login);
-app.use(session({ secret: "ssshhhhh" }));
-
-let sess;
-
 app.get("/", (req, res) => {
-  sess = req.session;
-  if (sess.email) {
+  if (req.email) {
+    // Authentifié
   }
 });
+
+app.post("/login", login);
 
 app.get("/api/pathsteps", async (req, res) => {
   const rep = await getPathSteps();
@@ -55,12 +51,28 @@ app.get("/api/categories", async (req, res) => {
   const rep = await getCategories();
   res.send(rep);
 });
-app.post("/api/login", async (req, res) => {
-  let login = req.body.login;
-  let password = req.body.password;
-  const rep = await loginBD(login, password);
-  res.send(rep);
+
+app.post("/api/question", isCommunity, async (req, res) => {
+  //console.log(req.body);
+  let action = req.body.action;
+  let question = req.body.question;
+  let id_user = req.body.id_user;
+  let comments = req.body.comments;
+  let status = req.body.status;
+  let id = req.body.id;
+
+  const rep = await api_question(
+    action,
+    question,
+    id_user,
+    comments,
+    status,
+    id
+  );
+  //console.log(rep);
+  res.send(action);
 });
+
 app.listen(port, () => {
   console.log("serveur 🚀🚀");
 });
