@@ -1,3 +1,4 @@
+import { QuestionComponent } from './components/question/question.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
@@ -17,10 +18,14 @@ const routes: Routes = [
     path: "account",
     component: AccountComponent
   },
+  {
+    path: "question/:id",
+    component: QuestionComponent
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

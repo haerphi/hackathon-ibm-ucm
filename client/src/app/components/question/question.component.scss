@@ -1,0 +1,56 @@
+// CODE COULEUR IBM
+
+// #086788 
+// #219EDF 
+// #8ACDEA 
+// #FFFFFF 
+// #993955 
+
+#content {
+  margin: 0 auto;
+  padding: 100px;
+  background-color: #086788;
+
+  .questionComponent {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .responseComponent {
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    li {
+      list-style-type: none;
+    }
+
+    .usefull {
+      div {
+        margin: 0 10px;
+
+      }
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .buttonup {
+
+        padding: 20px;
+        background-color: #8ACDEA;
+      }
+
+      .buttondown {
+
+        padding: 20px;
+        background-color: #8ACDEA;
+      }
+    }
+  }
+}
