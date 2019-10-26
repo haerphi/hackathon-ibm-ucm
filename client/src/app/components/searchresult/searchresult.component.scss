@@ -70,32 +70,36 @@
           display: flex;
           flex-direction: row;
           justify-content: space-around;
-          align-content: space-around;
+          align-content: center;
+
+        .sector {
+          width: 10rem;
+          margin-left: 0.5rem;
+          display: flex;
+          flex-direction: row;
+          text-align: left;
+          overflow: hidden;
         }
 
         .category {
-          width: 25%;
+          width: 10rem;
+          overflow: hidden;
+          text-align: left;
+          // display: flex;
+          // flex-direction: row;
+          // justify-content: center;
+          // align-items: center;
+
+          p {
+            margin-left: 0.5rem;
+          }
         }
 
-        .description {
-          width: 65%;
+        .question {
+          width: 30rem;
           margin-left: 0.5rem;
-        }
-
-        .match {
-          width: 10%;
-          margin-left: 0.5rem;
-          justify-content: center;
-        }
-
-        .example {
-          display: flex;
-          align-items: center;
-          background: rgba(33, 158, 223, 1);
-          border: 1px solid white;
-          border-radius: 0.5rem;
-          color: white;
-          padding: 1rem;
+          overflow: hidden;
+          text-align: left;
         }
 
         .sub {
@@ -106,6 +110,7 @@
           border-radius: 0.5rem;
           padding: 1rem;
         }
+      }
     }
 
   }
