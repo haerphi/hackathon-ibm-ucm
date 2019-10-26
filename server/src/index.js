@@ -4,18 +4,17 @@ const jwt = require("jsonwebtoken");
 import { login, isCommunity } from "./middleware/auth";
 const cors = require("cors");
 
-const AssistantV2 = require('ibm-watson/assistant/v2');
-const { IamAuthenticator } = require('ibm-watson/auth');
+const AssistantV2 = require("ibm-watson/assistant/v2");
+const { IamAuthenticator } = require("ibm-watson/auth");
 
 const assistant = new AssistantV2({
-  version: '2019-02-28',
+  version: "2019-02-28",
   authenticator: new IamAuthenticator({
-    apikey: 'wpUJyUrvdn5z5b7_zGj8XkA6ZKHNYuZ9DppW7itUVu0L',
+    apikey: "wpUJyUrvdn5z5b7_zGj8XkA6ZKHNYuZ9DppW7itUVu0L"
   }),
-  url: 'https://gateway-lon.watsonplatform.net/assistant/api',
+  url: "https://gateway-lon.watsonplatform.net/assistant/api"
 });
 
-import { login } from "./middleware/auth";
 import {
   getPathSteps,
   getLegalStatus,
@@ -88,38 +87,39 @@ app.post("/api/question", isCommunity, async (req, res) => {
   res.send(action);
 });
 
-
 app.post("/assistant/test", (req, res) => {
-  let input= {};
-  if(req.body.input){
+  let input = {};
+  if (req.body.input) {
     input = {
-      'message_type': 'text',
-      'text': req.body.input
-      }
+      message_type: "text",
+      text: req.body.input
+    };
   }
-  
-  assistant.createSession({
-  assistantId: 'b39a83ff-d751-4605-b88e-be79a54554cd'
-})
-  .then(respond => {
-    const sessionID = respond.result.session_id; 
-    assistant.message({
-      assistantId: 'b39a83ff-d751-4605-b88e-be79a54554cd',
-      sessionId: sessionID,
-      input
-      })
-      .then(respond => {
-        console.log(JSON.stringify(respond, null, 2));
-        res.send(JSON.stringify(respond, null, 2))
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  })
-  .catch(err => {
-    console.log(err);
-  });})
 
+  assistant
+    .createSession({
+      assistantId: "b39a83ff-d751-4605-b88e-be79a54554cd"
+    })
+    .then(respond => {
+      const sessionID = respond.result.session_id;
+      assistant
+        .message({
+          assistantId: "b39a83ff-d751-4605-b88e-be79a54554cd",
+          sessionId: sessionID,
+          input
+        })
+        .then(respond => {
+          console.log(JSON.stringify(respond, null, 2));
+          res.send(JSON.stringify(respond, null, 2));
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 app.listen(port, () => {
   console.log("serveur 🚀🚀");
