@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const jwt = require("jsonwebtoken");
 import { login, isCommunity } from "./middleware/auth";
 const cors = require("cors");
 
@@ -23,8 +22,7 @@ import {
   getCategories
 } from "./bd/userrequest";
 
-import { api_question } from "./bd/crud";
-import { search } from "./middleware/question";
+import { api_question, search } from "./bd/crud";
 
 const port = 12345;
 
@@ -65,7 +63,11 @@ app.get("/api/categories", async (req, res) => {
   const rep = await getCategories();
   res.send(rep);
 });
-
+app.get("/api/search", async (req, res) => {
+  let query = req.query.search;
+  const rep = await search(query);
+  res.send(rep);
+});
 app.post("/api/question", isCommunity, async (req, res) => {
   //console.log(req.body);
   let action = req.body.action;
@@ -84,7 +86,7 @@ app.post("/api/question", isCommunity, async (req, res) => {
     id
   );
   //console.log(rep);
-  res.send(action);
+  res.send(rep);
 });
 
 app.post("/assistant", (req, res) => {
