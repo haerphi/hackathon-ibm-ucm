@@ -1,30 +1,37 @@
-<div class="wrapper_Home">
-    <div class="content_Home">
-      <div class="intro">
-        <h1>LEGAL TEXT ?</h1>
-        <h2>Yes. They can be quite confusing...</h2>
-        <p>
-          UCM.search is a platform in which you can search for simplificated
-          interpretation of legal text.
-        </p>
-        <p>
-          Our main focus is to be there <b><i>with you</i></b> side-by-side during
-          your journey as company leader.
-        </p>
-        <div class="search-container">
-          <form onsubmit="return false">
-            <input
-              #search
-              type="text"
-              placeholder="Search..."
-              name="search"
-              (keydown)="onKeydown($event, search.value)"
-            />
-            <button type="button" (click)="searchFnc(search.value)">
-              <img src="../../../assets/search.svg" />
-            </button>
-          </form>
-        </div>
+<div class="wrapper_Account">
+  <div class="content_Account">
+    <div class="left_Col">
+      <img src="../../../assets/logouser.svg" />
+      <p>Hi "user name"</p>
+      <select>
+        <option value="" disabled selected>Path Progression</option>
+        <option> </option>
+      </select>
+    </div>
+    <div class="center_Col">
+    <div class="center_Left">
+      <div class="waiting_Questions">
+          <h4>You questions waiting for an answer :</h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span> 
+      </div>  
+      <div class="historic">
+            <h4>You Historic :</h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span> 
+      </div>
+      <div class="answers_Pending">
+            <h4>Your answer waiting for Specialist review :</h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestias?</span> 
       </div>
     </div>
+      <div class="center_Right">
+            <h4>Your personnal assistant :</h4>
+          </div>
+    </div>
   </div>
+</div>
