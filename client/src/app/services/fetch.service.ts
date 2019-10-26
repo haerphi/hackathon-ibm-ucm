@@ -10,33 +10,23 @@ export class FetchService {
   constructor() {}
 
   async search(text: string) {
-    console.log(`Seach : ${text}`);
-    let rep: any = await axios.get(
-      `http://localhost/api/search?search=${text}`
-    );
-    console.log(rep.data);
-    rep = [
-      {
-        category: "V.A.T",
-        descCat:
-          "This topic is about Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas culpa doloremque consequuntur."
-      },
-      {
-        category: "Human Ressources",
-        descCat:
-          "This topic is about Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, esse!"
-      },
-      {
-        category: "Retirement",
-        descCat: "This topic is about Lorem ipsum dolor sit amet."
-      },
-      {
-        category: "Seling",
-        descCat:
-          "This topic is about Lorem ipsum dolor sit amet consectetur adipisicing."
+    if (text.length > 0) {
+      console.log(`Seach : ${text}`);
+      let rep: any = await axios.get(
+        `http://localhost/api/search?search=${text}`
+      );
+      console.log(rep.data);
+      let respond = rep.data;
+      this.resultSearch = [];
+      for (let i = 0; respond.length; i++) {
+        this.resultSearch.push({
+          id: respond[i].id_question_pk,
+          question: respond[i].question,
+          job_domains: respond[i].job_domains,
+          categories: respond[i].categories
+        });
       }
-    ];
-    this.resultSearch = rep;
+    }
   }
 
   async fetchBasic(looking: string) {

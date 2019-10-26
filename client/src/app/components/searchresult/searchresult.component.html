@@ -2,32 +2,24 @@
   <div class="content_Search">
     <div class="search-container">
       <form onsubmit="return false">
-        <input
-          #search
-          type="text"
-          placeholder="Search.."
-          name="search"
-          (keydown)="onKeydown($event, search.value)"
-        />
+        <input #search type="text" placeholder="Search.." name="search" />
         <button type="button" (click)="searchFnc(search.value)">
           <img src="../../../assets/search.svg" />
         </button>
       </form>
     </div>
     <div *ngIf="this.fetchService.resultSearch != null" class="results">
-      <div *ngFor="let cat of this.fetchService.resultSearch" class="items">
-          <div class="items" id="zero">
-        <div class="category example">Category</div>
-        <div class="description example">Description</div>
-        <div class="match example">Match</div>
-      </div>
-        <div class="category sub">
-          {{ cat.category }}
+      <div *ngFor="let res of this.fetchService.resultSearch" class="items">
+        <div class=" sub">
+          <p *ngFor="let cat of res.categories">{{ cat.label }}</p>
         </div>
-        <div class="description sub">
-          {{ cat.descCat }}
+        <div class=" sub">
+          {{ res.question }}
         </div>
-        <div class="match sub">2/63</div>
+        <div class=" sub">
+          <p *ngFor="let dom of res.job_domains">{{ dom.label }}</p>
+        </div>
+        <div class=" sub"><button (click)="moveTo(res.id)">Open</button></div>
       </div>
     </div>
   </div>

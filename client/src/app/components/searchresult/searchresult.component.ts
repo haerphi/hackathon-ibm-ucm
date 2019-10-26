@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FetchService } from "src/app/services/fetch.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-searchresult",
@@ -7,11 +8,15 @@ import { FetchService } from "src/app/services/fetch.service";
   styleUrls: ["./searchresult.component.scss"]
 })
 export class SearchresultComponent implements OnInit {
-  constructor(private fetchService: FetchService) {}
+  constructor(public router: Router, private fetchService: FetchService) {}
 
   ngOnInit() {}
 
   searchFnc(text: string) {
     this.fetchService.search(text);
+  }
+
+  moveTo(id: number) {
+    this.router.navigate([`/question/${id}`]);
   }
 }
