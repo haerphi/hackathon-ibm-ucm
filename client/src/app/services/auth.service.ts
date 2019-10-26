@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class AuthService {
-  token: string = null;
+  public token: string = null;
 
   constructor(public router: Router) {}
 
