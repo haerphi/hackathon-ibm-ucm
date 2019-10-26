@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 import { login } from "./middleware/auth";
 import {
@@ -14,9 +15,10 @@ import {
 
 import { search } from "./middleware/question";
 
-const app = express();
-
 const port = 12345;
+
+const app = express();
+app.use(cors());
 
 app.use(bodyParser.json());
 

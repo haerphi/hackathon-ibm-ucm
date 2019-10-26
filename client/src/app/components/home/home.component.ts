@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FetchService } from "../../services/fetch.service";
 
 @Component({
   selector: "app-home",
@@ -6,17 +7,17 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private fetchService: FetchService) {}
 
   ngOnInit() {}
 
   searchFnc(text: string) {
-    console.log(text);
+    this.fetchService.search(text);
   }
 
   onKeydown(event: { key: string }, text: string) {
     if (event.key === "Enter") {
-      console.log(event);
+      this.fetchService.search(text);
     }
   }
 }
