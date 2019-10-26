@@ -22,11 +22,11 @@ export class SignupComponent implements OnInit {
 
   async getSelect() {
     this.pathSteps = await this.fetchService.fetchBasic("pathsteps");
-      this.legalstatus = await this.fetchService.fetchBasic("legalstatus");
-      this.selfemplyedstatus = await this.fetchService.fetchBasic(
-        "selfemplyedstatus"
-      );
-      this.jobdomains = await this.fetchService.fetchBasic("jobdomains");
+    this.legalstatus = await this.fetchService.fetchBasic("legalstatus");
+    this.selfemplyedstatus = await this.fetchService.fetchBasic(
+      "selfemplyedstatus"
+    );
+    this.jobdomains = await this.fetchService.fetchBasic("jobdomains");
   }
 
   toggleShowSignUp() {

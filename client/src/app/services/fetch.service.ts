@@ -6,12 +6,34 @@ import axios from "axios";
 })
 export class FetchService {
   loading: boolean;
+  resultSearch: any;
   constructor() {}
 
   async search(text: string) {
-    console.log(text);
+    console.log(`Seach : ${text}`);
     //const rep = await axios.get("http://localhost/api/search");
-    return { error: "not yet implement" };
+    const rep = [
+      {
+        category: "V.A.T",
+        descCat:
+          "This topic is about Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas culpa doloremque consequuntur."
+      },
+      {
+        category: "Human Ressources",
+        descCat:
+          "This topic is about Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, esse!"
+      },
+      {
+        category: "Retirement",
+        descCat: "This topic is about Lorem ipsum dolor sit amet."
+      },
+      {
+        category: "Seling",
+        descCat:
+          "This topic is about Lorem ipsum dolor sit amet consectetur adipisicing."
+      }
+    ];
+    this.resultSearch = rep;
   }
 
   async fetchBasic(looking: string) {
