@@ -1,0 +1,55 @@
+<div *ngIf="AskisShown" class="wrapper_Ask">
+    <div class="content_Ask">
+      <form>
+        <label for="Question"></label
+        ><input
+          #email
+          class="question"
+          name="question"
+          type="text"
+          placeholder="Your Question"
+          required
+        />
+        <label for="Category"></label
+        ><input
+          #Category
+          class="Category"
+          name="Category"
+          type="text"
+          placeholder="Category"
+          required
+        />
+        <label for="Sector"></label
+            ><input
+              #Sector
+              class="Sector"
+              name="Sector"
+              type="text"
+              placeholder="Sector"
+              required
+            />
+            <label for="Comments"></label
+                ><input
+                  #Comments
+                  class="Comments"
+                  name="Comments"
+                  type="text"
+                  placeholder="Comments"
+                  required
+                />
+        <button type="button">
+          Ask
+        </button>
+      </form>
+    </div>
+    <svg
+      (click)="toggleShowAsk()"
+      viewPort="0 0 12 12"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line x1="1" y1="11" x2="11" y2="1" stroke="#219edf" stroke-width="2" />
+      <line x1="1" y1="1" x2="11" y2="11" stroke="#219edf" stroke-width="2" />
+    </svg>
+  </div>
+  

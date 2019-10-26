@@ -19,4 +19,10 @@ export class SearchresultComponent implements OnInit {
   moveTo(id: number) {
     this.router.navigate([`/question/${id}`]);
   }
+
+  AskisShown: boolean = false; // Hidden by default
+
+  toggleShowAsk() {
+    this.AskisShown = !this.AskisShown;
+  }
 }
