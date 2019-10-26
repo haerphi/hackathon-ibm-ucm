@@ -11,7 +11,6 @@ export class AuthService {
 
   login(token: string) {
     this.token = token;
-    this.router.navigate(["account"]);
   }
 
   async isLogin() {

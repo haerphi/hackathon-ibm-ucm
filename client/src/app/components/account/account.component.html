@@ -2,7 +2,8 @@
   <div class="content_Account">
     <div class="left_Col">
       <img src="../../../assets/logouser.svg" />
-      <p>Hi "user name"</p>
+      <p>"user name"</p>
+      <p>Community Member</p>
       <select>
         <option value="" disabled selected>Path Progression</option>
         <option> </option>
@@ -44,47 +45,50 @@
           <h4>Your answer waiting for Specialist review :</h4>
           <span
             >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit, molestias?</span
+            Reprehenderit, molestias</span
           >
           <span
             >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit, molestias?</span
+            Reprehenderit, molestias</span
           >
           <span
             >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit, molestias?</span
+            Reprehenderit, molestias</span
           >
         </div>
       </div>
       <div class="center_Right">
         <h4>Your personnal assistant :</h4>
+        <div class="gooey">
+            <span class="dot"></span>
+            <div class="dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
         <div id="watson">
-          <div *ngFor="let msg of this.messages">
-            <p *ngIf="msg.type === 'text'">{{ msg.text }}</p>
-            <p *ngIf="msg.type === 'option'">{{ msg.text }}</p>
-            <ul *ngIf="msg.type === 'option'">
-              <li
+            <p class="speech-bubble">Good evening "user name",</p>
+          <div id="generated" *ngFor="let msg of this.messages">
+            <p class="speech-bubble" *ngIf="msg.type === 'text'">{{ msg.text }}</p>
+            <div id="more" *ngIf="!OptionsShown" >
+            <p class="speech-bubble" *ngIf="msg.type === 'option'">{{ msg.text }}</p>
+              <div *ngIf="msg.type === 'option'">
+              <button
                 *ngFor="let option of msg.options"
-                (click)="this.sendToWatson(option.value.input.text)"
+                (click)="this.sendToWatson(option.value.input.text); toggleShowOptions()"
               >
                 {{ option.label }}
-              </li>
-            </ul>
+            </button>
+            </div>
           </div>
-          <input
-            #watsonInput
-            type="text"
-            (keydown)="onKeydown($event, watsonInput.value)"
-          />
-          <button
-            type="button"
-            (click)="
-              this.sendToWatson(watsonInput.value); watsonInput.value = ''
-            "
-          >
-            Send
-          </button>
+          </div>
         </div>
+        <input
+        type="text"
+        placeholder="What else can I help you with?"
+        name="talkwithwatson"
+      />
       </div>
     </div>
   </div>
