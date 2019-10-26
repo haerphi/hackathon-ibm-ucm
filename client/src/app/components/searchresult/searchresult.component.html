@@ -1,31 +1,33 @@
 <div class="wrapper_Search">
   <div class="content_Search">
     <div class="search-container">
-      <form>
-        <input type="text" placeholder="Search..." name="search" />
-        <button type="button"><img src="../../../assets/search.svg" /></button>
+      <form onsubmit="return false">
+        <input
+          #search
+          type="text"
+          placeholder="Search.."
+          name="search"
+          (keydown)="onKeydown($event, search.value)"
+        />
+        <button type="button" (click)="searchFnc(search.value)">
+          <img src="../../../assets/search.svg" />
+        </button>
       </form>
     </div>
-    <div class="results">
-      <div class="items" id="one">
-        <div class="category sub">V.A.T</div>
-        <div class="description sub">This topic is about Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas culpa doloremque consequuntur.</div>
+    <div *ngIf="this.fetchService.resultSearch != null" class="results">
+      <div *ngFor="let cat of this.fetchService.resultSearch" class="items">
+          <div class="items" id="zero">
+        <div class="category example">Category</div>
+        <div class="description example">Description</div>
+        <div class="match example">Match</div>
+      </div>
+        <div class="category sub">
+          {{ cat.category }}
+        </div>
+        <div class="description sub">
+          {{ cat.descCat }}
+        </div>
         <div class="match sub">2/63</div>
-      </div>
-      <div class="items" id="two">
-        <div class="category sub">Human Ressources</div>
-        <div class="description sub">This topic is about Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, esse!</div>
-        <div class="match sub">13/32</div>
-      </div>
-      <div class="items" id="three">
-        <div class="category sub">Retirement</div>
-        <div class="description sub">This topic is about Lorem ipsum dolor sit amet.</div>
-        <div class="match sub">21/81</div>
-      </div>
-      <div class="items" id="four">
-        <div class="category sub">Selling</div>
-        <div class="description sub">This topic is about Lorem ipsum dolor sit amet consectetur adipisicing.</div>
-        <div class="match sub">6/17</div>
       </div>
     </div>
   </div>
