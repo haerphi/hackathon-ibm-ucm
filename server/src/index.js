@@ -9,7 +9,7 @@ const { IamAuthenticator } = require("ibm-watson/auth");
 const assistant = new AssistantV2({
   version: "2019-02-28",
   authenticator: new IamAuthenticator({
-    apikey: "wpUJyUrvdn5z5b7_zGj8XkA6ZKHNYuZ9DppW7itUVu0L"
+    apikey: "api Key"
   }),
   url: "https://gateway-lon.watsonplatform.net/assistant/api"
 });
